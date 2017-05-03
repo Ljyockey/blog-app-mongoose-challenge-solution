@@ -127,4 +127,50 @@ describe('Blog API Resources', function() {
 		});
 	});
 
+	describe('PUT endpoint', function() {
+
+		it('should update fields sent over', function() {
+			const updateData = {
+				title: 'fizzBang',
+				content: 'lololololololololol'
+			};
+
+			return BlogPost.findOne().exec()
+			.then(function(blog) {
+				updateData.id = blog.id;
+				return chai.request(app)
+				.put(`/posts/${blog.id}`)
+				.send(updateData);
+			})
+			.then(function(res) {
+				res.should.have.status(201);
+				return BlogPost.findById(updateData.id).exec();
+			})
+			.then(function(blog) {
+				blog.id.should.equal(updateData.id);
+				blog.title.should.equal(updateData.title);
+				blog.content.should.equal(updateData.content);
+			});
+		});
+	});
+
+	describe('DELETE endpoint', function() {
+
+		it('should delete item', function() {
+			return BlogPost.findOne().exec()
+			.then(function(blog) {
+				const deleteId = blog.id;
+				return chai.request(app)
+				.delete(`/posts/${deleteId}`)
+			})
+			.then(function(res) {
+				res.should.have.status(204);
+				return BlogPost.findById(res.body.id).exec();
+			})
+			.then(function(res) {
+				should.not.exist(res);
+			});
+		});
+	});
+
 });
