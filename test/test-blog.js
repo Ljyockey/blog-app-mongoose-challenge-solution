@@ -26,7 +26,8 @@ function generateBlogData() {
 			firstName: faker.name.firstName(),
 			lastName: faker.name.lastName()
 		},
-		content: faker.lorem.sentence()
+		content: faker.lorem.sentence(),
+		created: faker.date.recent()
 	};
 }
 
@@ -70,7 +71,31 @@ describe ('GET endpoint', function() {
 		});
 	});
 
-	// it('should return restaurants with right fields');
+	it('should return restaurants with right fields', function() {
+		let res;
+		return chai.request(app)
+		.get('/posts')
+		.then(function(_res) {
+			res = _res;
+			res.should.have.status(200);
+			res.should.be.json;
+			res.body.should.be.a('array');
+			res.body.should.have.length.of.at.least(1);
+			res.body.forEach(function(post) {
+				post.should.be.a('object');
+				post.should.include.keys('title', 'author', 'content', 'id', 'created');
+			});
+			resBlog = res.body[0];
+			return BlogPost.findById(resBlog.id).exec();
+		})
+		.then(function(blog) {
+			console.log(blog);
+			resBlog.id.should.equal(blog.id);
+			resBlog.title.should.equal(blog.title);
+			resBlog.author.should.equal(blog.authorName);
+			resBlog.content.should.equal(blog.content);
+		});
+	});
 });
 
 });
