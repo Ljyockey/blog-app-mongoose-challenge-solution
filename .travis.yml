@@ -4,7 +4,6 @@ services:
 - mongodb
 deploy:
   provider: heroku
-  app: desolate-journey-45626
   api_key:
     secure: 24qUmgtUomG9Et9kqmfQ07k7ap4V28w6PoYhm8cmWi+viBJmBDSQnIq5/DJNyvASADJRvo9y8v03p8Y0Z2K8rGjEp7fseIlZDtam8B1uLula+M5U+ykszaL3rul+ZVt+zoNSP/BywISY4qCqb5xww+RNljePLFMkyS5hgZM4if2ncnnE7jBMNPht+rFUNvn7rgJjMfyw0O5btdff0NffulEPh72mmrz5Lx5G0slWDa4/i+pC1jxveH+3NB2NqM//kIIsGTvDA6GEUUprUmTtohaw/bGzcGve+sdSAs75+is3IHf5IAZoltvmQ05N81dpnb1iNHa+Up+FoeB35VAELIoQK5gqDzGZlOPaDTjR67qMRPwagKy7xiZH3teaX0I2FicSDhy7fEf/ORdxNlS+TNFZ1Ig90jEt0IU+J9lyHl0V9D5mooyfg2Zvx3QkZWIKucWaX+0qPf+VsBOwRIbvdweYk4ETmKmuq8C/PN8unFpEt6q44t9zasMDpaeq5NTv9+DliqE5cC55Lhx9PkDLgzr9VKBilRXr8Je/ERlQU3r/e05dxa3b4Z/jOpARoOlOQFYjO57gjHL8m8Ypp5dlOmLoZVtbzudrkWg+ouF9JhnIFkMo3yldS+wap1pdeMKzIVVV3CYDl7lbcn1J1TQF790je9CL5+eGctXdwTfjn5s=
   app: desolate-journey-45626
